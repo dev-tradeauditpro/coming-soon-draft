@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeAuditPro - Master Your Trading Edge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- YOUR PROVIDED BASE THEME --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition-property: background-color, border-color, color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+
+        :root {
+            --font-sans: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            
+            --success: #10b981; 
+            --danger: #f43f5e;  
+            --warning: #f59e0b; 
+            --info: #3b82f6;    
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #09090b;   
+            --bg-secondary: #18181b; 
+            --card-bg: #18181b;
+            --header-bg: rgba(9, 9, 11, 0.8);
+            --footer-bg: #09090b;
+            --section-bg: rgba(24, 24, 27, 0.4);
+            
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            
+            --primary-color: #10b981;
+            --primary-hover: #34d399;
+            
+            --border-color: #27272a;
+            --input-bg: #09090b;
+            --button-secondary-bg: #27272a;
+            --button-secondary-hover: #3f3f46;
+            
+            --chart-grid: rgba(255, 255, 255, 0.05);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        ::selection {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* --- COMING SOON PAGE SPECIFIC STYLES --- */
+        
+        /* Navbar */
+        nav {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--header-bg);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            color: var(--primary-color);
+        }
+
+        /* Main Content Container */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary-color);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h1 span {
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* Call to Action Buttons */
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--button-secondary-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--button-secondary-hover);
+        }
+
+        /* Features Section */
+        .features-header {
+            margin-bottom: 3rem;
+        }
+
+        .features-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .features-header p {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle top border accent for cards */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            background: var(--footer-bg);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .cta-container {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+	    <img src="https://trademetrics.s3.ap-south-1.amazonaws.com/PNG-icon.svg" alt="TradeAuditPro Logo" class="logo-icon" width="28" height="28">
+	    tradeAudit Pro
+        </div>
+        <div class="nav-links">
+            <a href="mailto:sujay9885@gmail.com" style="color: var(--text-secondary); font-size: 0.9rem;">Contact Support</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="badge">Platform Launching Soon</div>
+        
+        <h1>Master Your <span>Trading Edge</span></h1>
+        
+        <p class="subtitle">
+            The ultimate tradelogging platform designed to track, analyze, and optimize your market performance with pinpoint accuracy.
+        </p>
+
+        <div class="cta-container">
+            <a href="https://forms.gle/EFvnMrtj4wtZ5xir7" target="_blank" class="btn btn-primary">Join the Early Access Waitlist</a>
+        </div>
+
+        <div class="features-header">
+            <p>BUILT BY TRADERS, FOR TRADERS</p>
+            <h2>Everything you need to analyze your performance.</h2>
+        </div>
+
+        <div class="features-grid">
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Comprehensive Dashboard</h3>
+                <p>Gain instant insights with day-wise performance calculations and powerful filtering options (7d, 30d, 90d, YTD) to view your equity curve.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Detailed Trade Log</h3>
+                <p>Record every granular detail. Our advanced 17-column log tracks dates, scripts, execution times, quantities, and personal remarks to build a complete trading history.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Reliable</h3>
+                <p>Your data is yours. Built with robust backend architecture and secure authentication so you can focus on trading without worrying about your log.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 tradeAudit Pro. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
